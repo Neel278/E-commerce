@@ -61,3 +61,11 @@ Route::get('/logout', [
     'uses' => 'UserController@getLogout',
     'as' => 'logout'
 ]);
+Route::get('/products/{cat_id}', [
+    'uses' => 'ProductController@getCategoryProducts',
+    'as' => 'category.product'
+]);
+Route::get('/productimage/{filename}', [
+    'uses' => 'ProductController@getProductImage',
+    'as' => 'product.image'
+]);

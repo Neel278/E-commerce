@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RouteController extends Controller
 {
@@ -12,7 +15,9 @@ class RouteController extends Controller
     }
     public function getShop()
     {
-        return view('shop');
+        $categories = Category::all();
+        $products = Product::all();
+        return view('shop')->with(['categories' => $categories, 'products' => $products]);
     }
     public function getSingleProduct()
     {
