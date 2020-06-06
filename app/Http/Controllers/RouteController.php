@@ -34,4 +34,8 @@ class RouteController extends Controller
     {
         return view('contact');
     }
+    public function getSignup()
+    {
+        return view('user.signup');
+    }
 }

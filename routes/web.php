@@ -41,3 +41,7 @@ Route::get('/contact', [
     'uses' => 'RouteController@getContact',
     'as' => 'contact'
 ]);
+Route::get('/signup', [
+    'uses' => 'RouteController@getSignup',
+    'as' => 'signup'
+]);
