@@ -22,4 +22,8 @@ class RouteController extends Controller
     {
         return view('cart');
     }
+    public function getCheckout()
+    {
+        return view('checkout');
+    }
 }

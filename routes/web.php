@@ -29,3 +29,7 @@ Route::get('/cart', [
     'uses' => 'RouteController@getCart',
     'as' => 'cart'
 ]);
+Route::get('/checkout', [
+    'uses' => 'RouteController@getCheckout',
+    'as' => 'checkout'
+]);
