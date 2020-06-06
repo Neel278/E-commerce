@@ -37,3 +37,7 @@ Route::get('/about', [
     'uses' => 'RouteController@getAbout',
     'as' => 'about'
 ]);
+Route::get('/contact', [
+    'uses' => 'RouteController@getContact',
+    'as' => 'contact'
+]);

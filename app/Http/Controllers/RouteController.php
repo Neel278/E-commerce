@@ -30,4 +30,8 @@ class RouteController extends Controller
     {
         return view('about');
     }
+    public function getContact()
+    {
+        return view('contact');
+    }
 }
