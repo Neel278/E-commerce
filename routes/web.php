@@ -33,3 +33,7 @@ Route::get('/checkout', [
     'uses' => 'RouteController@getCheckout',
     'as' => 'checkout'
 ]);
+Route::get('/about', [
+    'uses' => 'RouteController@getAbout',
+    'as' => 'about'
+]);
