@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+About Us
+@endsection
+
 @section('content')
 <div class="hero-wrap hero-bread" style="background-image: url({{URL::to('src/images/bg_6.jpg')}})">
     <div class="container">

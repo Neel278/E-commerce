@@ -1,4 +1,8 @@
 @extends('layouts.master')
+<!-- make title dynamic-->
+@section('title')
+Product
+@endsection
 
 @section('content')
 <div class="hero-wrap hero-bread" style="background-image: url({{URL::to('src/images/bg_6.jpg')}})">
