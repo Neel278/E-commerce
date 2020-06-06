@@ -4,12 +4,18 @@
             <div class="col-lg-12 d-block">
                 <div class="row d-flex">
                     <div class="col-md pr-4 d-flex topper align-items-center">
-                        <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-                        <span class="text">+91 6355082848</span>
+                        <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-user"></span></div>
+                        <span class="text">Hello
+                            @if(Auth::check())
+                            {{Auth::user()->first_name}}
+                            @else
+                            Guest User
+                            @endif
+                        </span>
                     </div>
                     <div class="col-md pr-4 d-flex topper align-items-center">
                         <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-                        <span class="text">example@gmail.com</span>
+                        <span class="text">neel@gmail.com</span>
                     </div>
                     <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
                         <span class="text">3-5 Business days delivery &amp; Free Returns</span>
@@ -41,7 +47,11 @@
                 <li class="nav-item"><a href="{{route('about')}}" class="nav-link">About</a></li>
                 <!-- <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li> -->
                 <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
+                @if(Auth::check())
+                <li class="nav-item"><a href="{{route('logout')}}" class="nav-link">Logout</a></li>
+                @else
                 <li class="nav-item"><a href="{{route('signup')}}" class="nav-link">Login/Signup</a></li>
+                @endif
                 <li class="nav-item cta cta-colored"><a href="{{route('cart')}}" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
 
             </ul>

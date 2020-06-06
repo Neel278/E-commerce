@@ -31,7 +31,7 @@ class UserController extends Controller
         $user->save();
 
         Auth::login($user);
-
+        //$request->session()->put(['first_name' => $first_name, 'email' => $email]);
         return redirect()->route('home');
     }
     public function postLogin(Request $request)
@@ -41,9 +41,15 @@ class UserController extends Controller
             'password' => 'required|min:4'
         ]);
         if (Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {
+            // $request->session()->put(['first_name' => Auth::user()->first_name, 'email' => $$request['email']]);
             return redirect()->route('home');
         } else {
             return redirect()->back();
         }
+    }
+    public function getLogout()
+    {
+        Auth::logout();
+        return redirect()->route('home');
     }
 }
