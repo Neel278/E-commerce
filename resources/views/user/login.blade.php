@@ -18,9 +18,11 @@ Login
 
 <section class="ftco-section">
     <div class="container">
+        @include('messages.error')
         <div class="row justify-content-center">
             <div class="col-xl-8 ftco-animate">
-                <form action="#" method="POST" class="billing-form">
+                <form action="{{route('login')}}" method="POST" class="billing-form">
+                    @csrf
                     <h3 class="mb-4 billing-heading">Login Details</h3>
                     <div class="row align-items-end">
                         <div class="col-md-12">
@@ -39,7 +41,7 @@ Login
                         <div class="w-100"></div>
                         <div class="col-md-12 offset-md-5">
                             <div class="form-group">
-                                <a href="#" type="submit" role="button" class="btn btn-primary py-3 px-4">Login</a>
+                                <button type="submit" role="button" class="btn btn-primary py-3 px-4">Login</button>
                             </div>
                         </div>
                         <div class="w-100"></div>

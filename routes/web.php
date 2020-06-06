@@ -49,3 +49,11 @@ Route::get('/login', [
     'uses' => 'RouteController@getLogin',
     'as' => 'login'
 ]);
+Route::post('/signup', [
+    'uses' => 'UserController@postSignup',
+    'as' => 'signup'
+]);
+Route::post('/login', [
+    'uses' => 'UserController@postLogin',
+    'as' => 'login'
+]);

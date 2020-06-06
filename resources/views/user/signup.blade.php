@@ -18,9 +18,11 @@ Signup
 
 <section class="ftco-section">
     <div class="container">
+        @include('messages.error')
         <div class="row justify-content-center">
             <div class="col-xl-8 ftco-animate">
                 <form action="{{ route('signup') }}" method="POST" class="billing-form">
+                    @csrf
                     <h3 class="mb-4 billing-heading">Signup Details</h3>
                     <div class="row align-items-end">
                         <div class="col-md-6">
@@ -36,13 +38,7 @@ Signup
                             </div>
                         </div>
                         <div class="w-100"></div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="phone">Phone</label>
-                                <input type="text" name="phone" class="form-control" id="phone">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="emailaddress">Email Address</label>
                                 <input type="text" name="email" class="form-control" id="emailaddress">
@@ -58,13 +54,13 @@ Signup
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="conf_password">Confirm Password</label>
-                                <input type="text" name="conf_password" class="form-control" id="conf_password">
+                                <input type="password" name="password_confirmation" class="form-control" id="conf_password">
                             </div>
                         </div>
                         <div class="w-100"></div>
                         <div class="col-md-12 offset-md-5">
                             <div class="form-group">
-                                <a href="#" type="submit" role="button" class="btn btn-primary py-3 px-4">Signup</a>
+                                <button type="submit" role="button" class="btn btn-primary py-3 px-4">Signup</button>
                             </div>
                         </div>
                         <div class="w-100"></div>
