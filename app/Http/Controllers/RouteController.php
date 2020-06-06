@@ -38,4 +38,8 @@ class RouteController extends Controller
     {
         return view('user.signup');
     }
+    public function getLogin()
+    {
+        return view('user.login');
+    }
 }

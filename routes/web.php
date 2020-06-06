@@ -45,3 +45,7 @@ Route::get('/signup', [
     'uses' => 'RouteController@getSignup',
     'as' => 'signup'
 ]);
+Route::get('/login', [
+    'uses' => 'RouteController@getLogin',
+    'as' => 'login'
+]);

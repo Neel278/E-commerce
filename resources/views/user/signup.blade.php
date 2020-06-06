@@ -9,7 +9,7 @@ Signup
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
-                <p class="breadcrumbs"><span class="mr-2"><a href="{{ route('home') }}">Home</a></span> <span>Checkout</span></p>
+                <p class="breadcrumbs"><span class="mr-2"><a href="{{ route('home') }}">Home</a></span> <span>Signup</span></p>
                 <h1 class="mb-0 bread">Signup</h1>
             </div>
         </div>
@@ -20,7 +20,7 @@ Signup
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-8 ftco-animate">
-                <form action="#" class="billing-form">
+                <form action="{{ route('signup') }}" method="POST" class="billing-form">
                     <h3 class="mb-4 billing-heading">Signup Details</h3>
                     <div class="row align-items-end">
                         <div class="col-md-6">
@@ -71,7 +71,7 @@ Signup
                         <div class="col-md-12 offset-md-4">
                             <div class="form-group mt-4">
                                 <div class="radio">
-                                    <label class="mr-3"> Already have a Account ? <a href="#">Login Here</a> </label>
+                                    <label class="mr-3"> Already have an Account ? <a href="{{ route('login') }}">Login Here</a> </label>
                                 </div>
                             </div>
                         </div>
