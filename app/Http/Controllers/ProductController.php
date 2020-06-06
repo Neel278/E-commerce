@@ -15,8 +15,9 @@ class ProductController extends Controller
     // {
     //     $products = DB::table('products')->all();
     // }
-    public function getCategoryProducts($cat_id)
+    public function getCategoryProducts($cat_name)
     {
+        $cat_id = DB::table('categories')->where('product_category', $cat_name)->value('id');
         $products = DB::table('products')->where('category', $cat_id)->get();
         $categories = Category::all();
         return view('shop')->with(['categories' => $categories, 'products' => $products]);

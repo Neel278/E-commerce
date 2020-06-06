@@ -61,7 +61,7 @@ Route::get('/logout', [
     'uses' => 'UserController@getLogout',
     'as' => 'logout'
 ]);
-Route::get('/products/{cat_id}', [
+Route::get('/products/{cat_name}', [
     'uses' => 'ProductController@getCategoryProducts',
     'as' => 'category.product'
 ]);

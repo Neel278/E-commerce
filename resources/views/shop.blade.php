@@ -21,6 +21,7 @@ Shop with us
         <div class="row">
             <div class="col-md-8 col-lg-10 order-md-last">
                 <div class="row">
+                    @if(count($products) > 0)
                     @foreach($products as $product)
                     <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
                         <div class="product">
@@ -57,8 +58,11 @@ Shop with us
                         </div>
                     </div>
                     @endforeach
-                    <!-- ====================================================== -->
-                    <!-- ==================================================== -->
+                    @else
+                    <div class="col-sm-6 col-md-6 offset-3 ftco-animate">
+                        <h1>No Products Available</h1>
+                    </div>
+                    @endif
                 </div>
                 <div class="row mt-5">
                     <div class="col text-center">
@@ -80,19 +84,9 @@ Shop with us
             <div class="col-md-4 col-lg-2 sidebar">
                 @foreach($categories as $category)
                 <div class="sidebar-box-2">
-                    <h2 class="heading mb-4"><a href="{{ route('category.product',['cat_id'=>$category->id]) }}">{{ $category->product_category }}</a></h2>
+                    <h2 class="heading mb-4"><a href="{{ route('category.product',['cat_name'=>$category->product_category]) }}">{{ $category->product_category }}</a></h2>
                 </div>
                 @endforeach
-                <!-- <div class="sidebar-box-2">
-                    <h2 class="heading mb-4"><a href="#">Jeans</a></h2>
-                </div>
-                <div class="sidebar-box-2">
-                    <h2 class="heading mb-2"><a href="#">Bags</a></h2>
-                    <h2 class="heading mb-2"><a href="#">Accessories</a></h2>
-                </div>
-                <div class="sidebar-box-2">
-                    <h2 class="heading mb-4"><a href="#">Shoes</a></h2>
-                </div> -->
             </div>
         </div>
     </div>
