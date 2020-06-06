@@ -19,6 +19,11 @@ class RouteController extends Controller
         $products = Product::all();
         return view('shop')->with(['categories' => $categories, 'products' => $products]);
     }
+    public function getSingleProductDetails($product_id)
+    {
+        $product = Product::find($product_id);
+        return view('single-product')->with(['product' => $product]);
+    }
     public function getSingleProduct()
     {
         return view('single-product');

@@ -25,7 +25,7 @@ Shop with us
                     @foreach($products as $product)
                     <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
                         <div class="product">
-                            <a href="#" class="img-prod">
+                            <a href="{{ route('single-product.details',['product_id'=>$product->id]) }}" class="img-prod">
                                 @if(Storage::disk('local')->has($product->category.'-'.$product->id.'.webp'))
                                 <img src="{{ route('product.image',['filename'=>$product->category.'-'.$product->id.'.webp']) }}" alt="Colorlib Template" height="400px" width="288.66px">
                                 @else

@@ -25,6 +25,10 @@ Route::get('/single-product', [
     'uses' => 'RouteController@getSingleProduct',
     'as' => 'single-product'
 ]);
+Route::get('/single-product/{product_id}', [
+    'uses' => 'RouteController@getSingleProductDetails',
+    'as' => 'single-product.details'
+]);
 Route::get('/cart', [
     'uses' => 'RouteController@getCart',
     'as' => 'cart'
