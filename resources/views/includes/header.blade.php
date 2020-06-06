@@ -34,8 +34,8 @@
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
                         <a class="dropdown-item" href="{{ route('shop') }}">Shop</a>
                         <a class="dropdown-item" href="{{ route('single-product') }}">Single Product</a>
-                        <a class="dropdown-item" href="cart.html">Cart</a>
-                        <a class="dropdown-item" href="checkout.html">Checkout</a>
+                        <a class="dropdown-item" href="{{route('cart')}}">Cart</a>
+                        <a class="dropdown-item" href="#">Checkout</a>
                     </div>
                 </li>
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>

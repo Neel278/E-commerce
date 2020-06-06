@@ -18,4 +18,8 @@ class RouteController extends Controller
     {
         return view('single-product');
     }
+    public function getCart()
+    {
+        return view('cart');
+    }
 }
