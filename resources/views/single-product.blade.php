@@ -5,6 +5,7 @@ Product
 @endsection
 
 @section('content')
+@if(isset($product))
 <div class="hero-wrap hero-bread" style="background-image: url({{URL::to('src/images/bg_6.jpg')}})">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -86,29 +87,56 @@ Product
         </div>
     </div>
 </section>
+@else
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-5 ftco-animate">
+                <h1>No Products Available</h1>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
 
 <section class="ftco-section bg-light">
     <div class="container">
         <div class="row justify-content-center mb-3 pb-3">
             <div class="col-md-12 heading-section text-center ftco-animate">
-                <h2 class="mb-4">Ralated Products</h2>
+                <h2 class="mb-4">Top Products</h2>
                 <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
             </div>
         </div>
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-sm col-md-6 col-lg ftco-animate">
+            <!-- ================================================= -->
+            @foreach($releted as $product)
+            <div class="col-sm col-md-3 col-lg-3 ftco-animate">
                 <div class="product">
-                    <a href="#" class="img-prod"><img class="img-fluid" src="{{URL::to('src/images/product-1.jpg')}}" alt="Colorlib Template">
-                        <span class="status">30%</span>
+                    <a href="{{ route('single-product.details',['product_id'=>$product->id]) }}" class="img-prod">
+                        @if(Storage::disk('local')->has($product->category.'-'.$product->id.'.webp'))
+                        <img src="{{ route('product.image',['filename'=>$product->category.'-'.$product->id.'.webp']) }}" alt="Colorlib Template" height="390px" width="285px">
+                        @else
+                        <img class="img-fluid" src="{{ URL::to('src/images/no_picture.png') }}" alt="Colorlib Template">
+                        @endif
+                        @if($product->price_off > 0)
+                        <span class="status">
+                            {{ $product->price_off }}%
+                        </span>
+                        @endif
                         <div class="overlay"></div>
                     </a>
                     <div class="text py-3 px-3">
-                        <h3><a href="#">Floral Jackquard Pullover</a></h3>
+                        <h3><a href="#">{{ $product->name }}</a></h3>
                         <div class="d-flex">
                             <div class="pricing">
-                                <p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">$80.00</span></p>
+                                <p class="price">
+                                    @if($product->price_off > 0)
+                                    <span class="mr-2 price-dc">${{ $product->price }}</span>
+                                    @endif
+                                    <span class="price-sale">${{ $product->price - (($product->price_off/100)*$product->price) }}</span>
+                                </p>
                             </div>
                             <div class="rating">
                                 <p class="text-right">
@@ -127,7 +155,10 @@ Product
                     </div>
                 </div>
             </div>
-            <div class="col-sm col-md-6 col-lg ftco-animate">
+            @endforeach
+
+            <!-- ================================================= -->
+            <!-- <div class="col-sm col-md-6 col-lg ftco-animate">
                 <div class="product">
                     <a href="#" class="img-prod"><img class="img-fluid" src="{{URL::to('src/images/product-2.jpg')}}" alt="Colorlib Template">
                         <div class="overlay"></div>
@@ -210,7 +241,7 @@ Product
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </section>

@@ -31,14 +31,23 @@ Shop with us
                                 @else
                                 <img class="img-fluid" src="{{ URL::to('src/images/no_picture.png') }}" alt="Colorlib Template">
                                 @endif
-                                <span class="status">{{ $product->price_off }}%</span>
+                                @if($product->price_off > 0)
+                                <span class="status">
+                                    {{ $product->price_off }}%
+                                </span>
+                                @endif
                                 <div class="overlay"></div>
                             </a>
                             <div class="text py-3 px-3">
                                 <h3><a href="#">{{ $product->name }}</a></h3>
                                 <div class="d-flex">
                                     <div class="pricing">
-                                        <p class="price"><span class="mr-2 price-dc">${{ $product->price }}</span><span class="price-sale">${{ $product->price - (($product->price_off/100)*$product->price) }}</span></p>
+                                        <p class="price">
+                                            @if($product->price_off > 0)
+                                            <span class="mr-2 price-dc">${{ $product->price }}</span>
+                                            @endif
+                                            <span class="price-sale">${{ $product->price - (($product->price_off/100)*$product->price) }}</span>
+                                        </p>
                                     </div>
                                     <div class="rating">
                                         <p class="text-right">
@@ -51,8 +60,9 @@ Shop with us
                                     </div>
                                 </div>
                                 <p class="bottom-area d-flex px-3">
-                                    <a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-                                    <a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
+                                    <a href="{{ route('product.addToCart',['id'=>$product->id]) }}" class="add-to-cart text-center py-2 mr-1">
+                                        <span>Add to cart <i class="ion-ios-add ml-1"></i></span>
+                                    </a>
                                 </p>
                             </div>
                         </div>

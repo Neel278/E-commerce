@@ -21,10 +21,6 @@ Route::get('/shop', [
     'uses' => 'RouteController@getShop',
     'as' => 'shop'
 ]);
-Route::get('/single-product', [
-    'uses' => 'RouteController@getSingleProduct',
-    'as' => 'single-product'
-]);
 Route::get('/single-product/{product_id}', [
     'uses' => 'RouteController@getSingleProductDetails',
     'as' => 'single-product.details'
@@ -32,10 +28,6 @@ Route::get('/single-product/{product_id}', [
 Route::get('/cart', [
     'uses' => 'RouteController@getCart',
     'as' => 'cart'
-]);
-Route::get('/checkout', [
-    'uses' => 'RouteController@getCheckout',
-    'as' => 'checkout'
 ]);
 Route::get('/about', [
     'uses' => 'RouteController@getAbout',
@@ -61,10 +53,6 @@ Route::post('/login', [
     'uses' => 'UserController@postLogin',
     'as' => 'login'
 ]);
-Route::get('/logout', [
-    'uses' => 'UserController@getLogout',
-    'as' => 'logout'
-]);
 Route::get('/products/{cat_name}', [
     'uses' => 'ProductController@getCategoryProducts',
     'as' => 'category.product'
@@ -73,3 +61,17 @@ Route::get('/productimage/{filename}', [
     'uses' => 'ProductController@getProductImage',
     'as' => 'product.image'
 ]);
+Route::get('/add-to-cart/{id}', [
+    'uses' => 'ProductController@getAddToCart',
+    'as' => 'product.addToCart'
+]);
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/checkout', [
+        'uses' => 'RouteController@getCheckout',
+        'as' => 'checkout'
+    ]);
+    Route::get('/logout', [
+        'uses' => 'UserController@getLogout',
+        'as' => 'logout'
+    ]);
+});

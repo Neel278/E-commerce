@@ -94,7 +94,6 @@ Checkout
                         <div class="col-md-12">
                             <div class="form-group mt-4">
                                 <div class="radio">
-                                    <label class="mr-3"><input type="radio" name="optradio"> Create an Account? </label>
                                     <label><input type="radio" name="optradio"> Ship to different address</label>
                                 </div>
                             </div>
@@ -110,20 +109,20 @@ Checkout
                             <h3 class="billing-heading mb-4">Cart Total</h3>
                             <p class="d-flex">
                                 <span>Subtotal</span>
-                                <span>$20.60</span>
+                                <span>${{ $total }}</span>
                             </p>
                             <p class="d-flex">
                                 <span>Delivery</span>
-                                <span>$0.00</span>
-                            </p>
-                            <p class="d-flex">
-                                <span>Discount</span>
                                 <span>$3.00</span>
                             </p>
+                            <!-- <p class="d-flex">
+                                <span>Discount</span>
+                                <span>$3.00</span>
+                            </p> -->
                             <hr>
                             <p class="d-flex total-price">
                                 <span>Total</span>
-                                <span>$17.60</span>
+                                <span>${{ $total + 3 }}</span>
                             </p>
                         </div>
                     </div>

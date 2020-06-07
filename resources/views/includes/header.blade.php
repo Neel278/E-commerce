@@ -35,24 +35,24 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a href="{{ route('home') }}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="{{route('shop')}}" class="nav-link">Shop</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="{{ route('shop') }}">Shop</a>
-                        <a class="dropdown-item" href="{{ route('single-product') }}">Single Product</a>
-                        <a class="dropdown-item" href="{{route('cart')}}">Cart</a>
-                        <a class="dropdown-item" href="{{route('checkout')}}">Checkout</a>
+                        @if(Auth::check())
+                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
+                        <!-- <a class="dropdown-item" href="{{route('checkout')}}">Checkout</a> -->
+                        @else
+                        <a class="dropdown-item" href="{{ route('signup') }}">Signup</a>
+                        <a class="dropdown-item" href="{{route('login')}}">Login</a>
+                        @endif
                     </div>
                 </li>
                 <li class="nav-item"><a href="{{route('about')}}" class="nav-link">About</a></li>
                 <!-- <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li> -->
                 <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
-                @if(Auth::check())
-                <li class="nav-item"><a href="{{route('logout')}}" class="nav-link">Logout</a></li>
-                @else
-                <li class="nav-item"><a href="{{route('signup')}}" class="nav-link">Login/Signup</a></li>
-                @endif
-                <li class="nav-item cta cta-colored"><a href="{{route('cart')}}" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+                <li class="nav-item cta cta-colored"><a href="{{route('cart')}}" class="nav-link"><span class="icon-shopping_cart"></span>{{ Session::has('cart') ? '['.Session::get('cart')->totalQty.']' : [0] }}</a></li>
 
             </ul>
         </div>

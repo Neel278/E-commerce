@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class RouteController extends Controller
 {
@@ -22,7 +24,9 @@ class RouteController extends Controller
     public function getSingleProductDetails($product_id)
     {
         $product = Product::find($product_id);
-        return view('single-product')->with(['product' => $product]);
+
+        $releted = Product::all()->take(4);
+        return view('single-product')->with(['product' => $product, 'releted' => $releted]);
     }
     public function getSingleProduct()
     {
@@ -30,11 +34,23 @@ class RouteController extends Controller
     }
     public function getCart()
     {
-        return view('cart');
+        if (!Session::has('cart')) {
+            return redirect()->route('shop');
+        }
+        $oldcart = Session::get('cart');
+        $cart = new Cart($oldcart);
+        return view('cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+        //view is left do work on it
     }
     public function getCheckout()
     {
-        return view('checkout');
+        if (!Session::has('cart')) {
+            return redirect()->route('shop');
+        }
+        $oldcart = Session::get('cart');
+        $cart = new Cart($oldcart);
+        $total = $cart->totalPrice;
+        return view('checkout', ['total' => $total]);
     }
     public function getAbout()
     {
